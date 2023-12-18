@@ -1,0 +1,23 @@
+The code first displays the original grayscale image and then generates and displays approximate images with different 
+ranks using Singular Value Decomposition (SVD).
+The rank controls the level of approximation, and higher ranks retain more details from the original image. 
+This process is often used in image compression and dimensionality reduction.
+In the context of SVD, the singular values represent the importance or significance of the corresponding singular vectors in the decomposition.
+Singular values are typically sorted in descending order, indicating their magnitude.
+Larger singular values are associated with more significant patterns or structures in the data.
+The logarithmic scale is often used because it helps visualize the relative differences between singular values more effectively, 
+especially when there is a wide range of magnitudes.
+In a semilogy plot, each data point represents a singular value.
+If the plot shows a rapid decrease in the magnitude of singular values, it indicates that a few singular values contribute significantly
+to the data's structure, while many others are relatively small.
+The point where the plot starts to flatten out indicates a region where singular values contribute less to the overall 
+structure and can potentially be considered less significant.
+np.cumsum(np.diag(S)):
+  The cumulative sum at each position represents the total information retained when considering the singular values up to that position.
+np.sum(np.diag(S)):
+  This is the total information present in the original data.
+np.cumsum(np.diag(S)) / np.sum(np.diag(S)):
+This results in an array of values representing the cumulative percentage of information retained at each step.
+This plot (Singular_Values-Cumulative_Sum)provides insights into how well the approximation captures the information present in the original data. 
+A steeper initial slope indicates that a significant portion of information is captured with fewer singular values, 
+while a flatter slope indicates that additional singular values contribute less to the overall information.
